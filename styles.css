@@ -5,8 +5,9 @@
     --orange: #ff6b00; --orange-dim: #cc5500; --orange-glow: rgba(255,107,0,0.08);
     --gray-mid: #585850; --gray-light: #9e9e94; --border: rgba(242,237,228,0.1);
   }
-  html { scroll-behavior: smooth; }
-  body { background: var(--black); color: var(--off-white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 5rem; }
+  body { background: var(--black); color: var(--off-white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; -webkit-tap-highlight-color: rgba(255,107,0,0.15); -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; }
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 3rem; border-bottom: 0.5px solid var(--border); background: rgba(8,8,7,0.92); backdrop-filter: blur(14px); }
   .logo-wrap { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
   nav ul { list-style: none; display: flex; gap: 2.5rem; } .nav-toggle-cb { display: none; }
@@ -41,6 +42,10 @@
     .page-hero { padding: 8rem 1.5rem 4rem; }
     .section { padding: 4rem 1.5rem; }
     footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+    /* iOS zooms the page when focusing an input under 16px — force 16px on small screens */
+    input, textarea, select { font-size: 16px !important; }
+    /* Comfortable tap targets, no overflow */
+    .btn-fire, .btn-ghost { padding: 0.95rem 1.6rem; font-size: 0.78rem; }
   }
 
 .nav-dropdown { position: relative; }
