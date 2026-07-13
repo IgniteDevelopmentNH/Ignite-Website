@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ignite Development — AI Solutions for New Hampshire Businesses</title>
+<meta name="description" content="Ignite Development helps New Hampshire businesses adopt AI with practical, hands-on solutions — strategy, custom GPTs, automation, and training that deliver measurable results.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+  
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 5.5rem;position:relative;overflow:hidden;}
+.hero-bg-img{position:absolute;inset:0;background:url('assets/hero-bg.png') center/cover no-repeat;opacity:0.5;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,7,0.92) 0%,rgba(8,8,7,0.45) 48%,rgba(8,8,7,0.12) 100%),linear-gradient(120deg,rgba(8,8,7,0.35) 0%,transparent 55%);}
+.fire-line{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),#ffaa00,var(--orange));animation:fire-in 1.8s ease-out forwards;transform-origin:left;}
+@keyframes fire-in{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+.hero-eyebrow{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--orange);margin-bottom:1.6rem;opacity:0;animation:rise 0.8s 0.6s forwards;position:relative;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.5rem,11vw,9.5rem);line-height:0.9;letter-spacing:0.02em;opacity:0;animation:rise 0.9s 0.8s forwards;position:relative;}
+.hero h1 em{font-style:normal;color:var(--orange);display:block;}
+.hero-sub{max-width:560px;font-size:1.05rem;color:var(--gray-light);margin-top:2rem;line-height:1.8;opacity:0;animation:rise 0.8s 1.05s forwards;position:relative;}
+.hero-btns{display:flex;gap:1rem;margin-top:2.5rem;opacity:0;animation:rise 0.8s 1.25s forwards;position:relative;}
+@keyframes rise{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+/* TICKER */
+.ticker-bar{background:var(--orange);color:var(--black);padding:1.1rem 0;overflow:hidden;}
+.scroll-strip{display:flex;width:max-content;animation:leftscroll 22s linear infinite;white-space:nowrap;font-size:0.95rem;font-weight:400;letter-spacing:0.06em;}.scroll-strip span{padding-right:4rem;}
+@keyframes leftscroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+/* PROBLEM */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.before-after-img{width:100%;border-radius:2px;display:block;}
+.problem-list{display:flex;flex-direction:column;gap:0;border:0.5px solid var(--border);}
+.problem-item{display:flex;align-items:flex-start;gap:1rem;padding:1.4rem 1.5rem;border-bottom:0.5px solid var(--border);transition:background 0.2s;}
+.problem-item:last-child{border-bottom:none;}
+.problem-item:hover{background:var(--orange-glow);}
+.problem-icon{color:var(--orange);flex-shrink:0;}
+.problem-item p{font-size:0.92rem;color:var(--gray-light);line-height:1.6;margin:0;}
+/* SERVICES PREVIEW */
+.services-preview{display:grid;grid-template-columns:repeat(3,1fr);border:0.5px solid var(--border);}
+.svc-card{padding:2.5rem 2rem;border-right:0.5px solid var(--border);border-bottom:0.5px solid var(--border);transition:background 0.3s;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;display:block;color:inherit;}
+.svc-card:nth-child(3n){border-right:none;}
+.svc-card:nth-last-child(-n+2){border-bottom:none;}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.svc-card:hover{background:var(--orange-glow);}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-icon{font-size:1.5rem;margin-bottom:1rem;}
+.svc-card h3{font-size:0.85rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--off-white);margin-bottom:0.6rem;}
+.svc-card p{font-size:0.88rem;color:var(--gray-light);line-height:1.7;}
+/* INDUSTRIES */
+.industries-section{position:relative;overflow:hidden;}
+.industry-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(242,237,228,0.06);border:0.5px solid var(--border);margin-top:3rem;position:relative;}
+.industry-item{background:var(--black);padding:1.5rem;font-size:0.88rem;color:var(--gray-light);letter-spacing:0.04em;transition:background 0.2s;}
+.industry-item:hover{background:var(--orange-glow);color:var(--off-white);}
+.industry-num{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--orange);margin-bottom:0.3rem;}
+/* WHY IGNITE */
+.why-strip{display:grid;grid-template-columns:repeat(4,1fr);border:0.5px solid var(--border);}
+.why-item{padding:2.5rem 2rem;border-right:0.5px solid var(--border);transition:background 0.2s;}
+.why-item:last-child{border-right:none;}
+.why-item:hover{background:var(--orange-glow);}
+.why-dot{width:8px;height:8px;background:var(--orange);border-radius:50%;margin-bottom:1.2rem;}
+.why-item h3{font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--off-white);margin-bottom:0.6rem;}
+.why-item p{font-size:0.87rem;color:var(--gray-light);line-height:1.7;}
+/* NH LOCAL */
+.nh-section{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:0.5px solid var(--border);}
+.nh-img-block{position:relative;min-height:480px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.nh-img-block img{width:100%;height:100%;max-height:660px;object-fit:contain;display:block;padding:1.25rem;}
+.nh-content{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.nh-content p{color:var(--gray-light);font-size:1rem;line-height:1.85;margin-bottom:1.4rem;}
+.nh-content strong{color:var(--off-white);font-weight:500;}
+/* HOME CTA */
+.home-cta{text-align:center;padding:8rem 3rem;background:rgba(255,107,0,0.03);}
+.home-cta .big-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5.5rem);max-width:700px;margin:0 auto 1.5rem;line-height:1;}
+.home-cta p{color:var(--gray-light);max-width:480px;margin:0 auto 2.5rem;font-size:1rem;line-height:1.75;}
+@media(max-width:768px){
+  .hero{padding:0 1.5rem 4rem;}
+  .problem-grid,.nh-section{grid-template-columns:1fr;}
+  .services-preview{grid-template-columns:1fr;}
+  .svc-card{border-right:none!important;}
+  .industry-grid{grid-template-columns:1fr 1fr;}
+  .why-strip{grid-template-columns:1fr;}
+  .why-item{border-right:none;border-bottom:0.5px solid var(--border);}
+  .why-item:last-child{border-bottom:none;}
+  .nh-content{padding:3rem 1.5rem;}
+}
+  .offer-grid { display: grid; grid-template-columns: 1fr 1fr; border: 0.5px solid var(--border); }
+  .offer-grid .svc-card { border-bottom: 0.5px solid var(--border); }
+  .offer-grid .svc-card:nth-child(2n) { border-right: none; }
+  .offer-grid .svc-card:nth-last-child(-n+2) { border-bottom: none; }
+  .offer-card { display: flex; flex-direction: column; }
+  .offer-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--orange); margin-bottom: 1rem; line-height: 1; }
+  .offer-card h3 { font-size: 0.95rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--off-white); margin-bottom: 0.8rem; }
+  .offer-card p { font-size: 0.92rem; color: var(--gray-light); line-height: 1.75; margin-bottom: 1.5rem; }
+  .offer-link { margin-top: auto; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); font-weight: 500; }
+  .offer-note { margin-top: 2.5rem; text-align: center; color: var(--gray-mid); font-size: 0.88rem; letter-spacing: 0.06em; }
+  @media (max-width: 768px) { .offer-grid { grid-template-columns: 1fr; } .offer-grid .svc-card { border-right: none; border-bottom: 0.5px solid var(--border); } .offer-grid .svc-card:last-child { border-bottom: none; } }
+  
+</style>
+</head>
+<body>
+<nav><input type="checkbox" id="nav-toggle-cb" class="nav-toggle-cb" aria-hidden="true"><a href="index.html" class="logo-wrap"><img src="assets/logo.png" alt="Ignite Development" style="height:36px;width:auto;object-fit:contain;"></a><ul><li class="nav-dropdown"><span class="nav-drop-label">About <span class="nav-caret">&#9662;</span></span><ul class="nav-submenu"><li><a href="team.html">Our Team</a></li><li><a href="philosophies.html">Our Philosophies</a></li><li><a href="who-we-serve.html">Who We Serve</a></li></ul></li><li><a href="services.html">Services</a></li><li><a href="process.html">Process</a></li><li><a href="why-now.html">Why Now</a></li><li class="nav-dropdown"><span class="nav-drop-label">Resources <span class="nav-caret">&#9662;</span></span><ul class="nav-submenu"><li><a href="faq.html">FAQ</a></li><li><a href="blog.html">Blog</a></li></ul></li><li><a href="contact.html" class="nav-cta">Get Started</a></li></ul><label class="nav-toggle" for="nav-toggle-cb" aria-label="Menu" role="button" tabindex="0"><span></span><span></span><span></span></label></nav>
+
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="fire-line"></div>
+  <p class="hero-eyebrow">Custom AI Software for New Hampshire Businesses</p>
+  <h1>Adapt.<br><em>Or Fall Behind.</em></h1>
+  <p class="hero-sub">We build custom AI-powered software that solves real problems for your business — from client portals to internal tools — plus the consulting, brand, and internal systems to support it. We design, build, and deploy everything ourselves.</p>
+  <div class="hero-btns">
+    <a href="contact.html" class="btn-fire">Get Started</a>
+    <a href="services.html" class="btn-ghost">See Our Services</a>
+  </div>
+</section>
+
+<div class="ticker-bar">
+  <div class="scroll-strip">
+    <span><strong style="letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">The shift is now →</strong> &nbsp;&nbsp; Look consistently professional &nbsp;·&nbsp; Save hours on repetitive work &nbsp;·&nbsp; Documents that sound like you &nbsp;·&nbsp; AI built around your business &nbsp;·&nbsp; Practical, affordable, local &nbsp;&nbsp;&nbsp;</span>
+    <span><strong style="letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">The shift is now →</strong> &nbsp;&nbsp; Look consistently professional &nbsp;·&nbsp; Save hours on repetitive work &nbsp;·&nbsp; Documents that sound like you &nbsp;·&nbsp; AI built around your business &nbsp;·&nbsp; Practical, affordable, local &nbsp;&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="problem-grid">
+    <div>
+      <p class="eyebrow">The problem</p>
+      <h2 class="section-title">Most businesses know AI matters.<br>Few know where to start.</h2>
+      <div class="body-text">
+        <p>You're hearing about AI every day — but turning the hype into something that actually helps your business is the hard part. Most firms either do nothing, or buy the wrong tool and never use it.</p>
+        <p><strong>That's where we come in.</strong> We build custom AI-powered software tailored to how your business actually works — and back it with consulting, brand, and internal tools. Everything designed, built, and deployed by us.</p>
+      </div>
+      <a href="contact.html" class="btn-fire" style="margin-top:1rem;">Start the conversation</a>
+    </div>
+    <div>
+      <img class="before-after-img" src="assets/before-after.png" alt="Before AI vs After AI">
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="eyebrow">What we offer</p>
+  <h2 class="section-title">Practical AI solutions,<br>built around your business.</h2>
+  <div class="offer-grid" style="margin-top:3rem;">
+    <a href="services.html" class="svc-card offer-card">
+      <div class="offer-num">01</div>
+      <h3>Custom Software Development</h3>
+      <p>AI-powered software built around your business — client portals, internal tools, document generators, and analyzers that solve real problems.</p>
+      <span class="offer-link">Learn more &rarr;</span>
+    </a>
+    <a href="services.html" class="svc-card offer-card">
+      <div class="offer-num">02</div>
+      <h3>AI Optimization Consulting</h3>
+      <p>We find where AI can grow your revenue or cut your expenses — then implement the solutions ourselves.</p>
+      <span class="offer-link">Learn more &rarr;</span>
+    </a>
+    <a href="services.html" class="svc-card offer-card">
+      <div class="offer-num">03</div>
+      <h3>AI Brand Guide</h3>
+      <p>A custom AI brand agent that creates documents, presentations, and spreadsheets in your exact style and voice. Consistently.</p>
+      <span class="offer-link">Learn more &rarr;</span>
+    </a>
+    <a href="services.html" class="svc-card offer-card">
+      <div class="offer-num">04</div>
+      <h3>Internal GPT</h3>
+      <p>An internal AI agent trained on how your company operates — so your whole team can ask it anything and stay on the same page.</p>
+      <span class="offer-link">Learn more &rarr;</span>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:2.8rem;"><a href="contact.html" class="btn-ghost">Not sure which fits? Book a free discovery call &rarr;</a><p class="offer-note" style="margin-top:1.3rem;">Every engagement starts with a free discovery call.</p></div>
+</div>
+
+<div class="section industries-section">
+  
+  <p class="eyebrow" style="position:relative;">Who we serve</p>
+  <h2 class="section-title" style="position:relative;">Built for professional service firms<br>& growing New Hampshire businesses.</h2>
+  <div class="industry-grid">
+    <div class="industry-item"><div class="industry-num">01</div>Consultants</div>
+    <div class="industry-item"><div class="industry-num">02</div>Accounting Firms</div>
+    <div class="industry-item"><div class="industry-num">03</div>Financial Advisors</div>
+    <div class="industry-item"><div class="industry-num">04</div>Real Estate Teams</div>
+    <div class="industry-item"><div class="industry-num">05</div>Marketing Agencies</div>
+    <div class="industry-item"><div class="industry-num">06</div>Insurance Agencies</div>
+    <div class="industry-item"><div class="industry-num">07</div>Small Law Firms</div>
+    <div class="industry-item"><div class="industry-num">08</div>Home Service Businesses</div>
+  </div>
+</div>
+
+<div class="nh-section">
+  <div class="nh-img-block">
+    <img src="assets/nh-ignite.png" alt="Ignite Development — rooted in New Hampshire">
+  </div>
+  <div class="nh-content">
+    <p class="eyebrow">Rooted in Southern New Hampshire</p>
+    <h2 class="section-title">Local by choice.<br>Built for NH businesses.</h2>
+    <p>We're not a coastal agency pitching AI from afar. We're <strong>University of New Hampshire students based in Southern New Hampshire</strong> — we live and work here, and we're invested in the success of local businesses because we're part of this community.</p>
+    <p>From Manchester and Nashua to Portsmouth, Concord, and the Seacoast — we understand the <strong>Southern New Hampshire</strong> market you're operating in, and we bring affordable, practical AI solutions designed for businesses like yours.</p>
+    <a href="team.html" class="btn-ghost">Meet our team</a>
+  </div>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <p class="eyebrow">Why Ignite</p>
+  <h2 class="section-title">Practical. Strategic. Results-focused.</h2>
+  <p style="color:var(--gray-light);max-width:560px;margin-bottom:3rem;font-size:1rem;line-height:1.75;">We focus on real business outcomes, not hype. Our approach combines deep business understanding with modern AI expertise and hands-on implementation.</p>
+  <div class="why-strip">
+    <div class="why-item"><div class="why-dot"></div><h3>Business Understanding</h3><p>We learn how your business actually operates before recommending anything.</p></div>
+    <div class="why-item"><div class="why-dot"></div><h3>Modern AI Expertise</h3><p>Hands-on experience building and deploying real AI systems across multiple platforms.</p></div>
+    <div class="why-item"><div class="why-dot"></div><h3>Practical Implementation</h3><p>We don't hand you a report and leave — we build and deploy it ourselves.</p></div>
+    <div class="why-item"><div class="why-dot"></div><h3>Long-Term Partnership</h3><p>We stay available as your business evolves and your AI needs grow.</p></div>
+  </div>
+</div>
+
+<div class="home-cta">
+  <p class="eyebrow">Ready to explore what's possible?</p>
+  <div class="big-title">Let's talk about your business.</div>
+  <p>Book a free discovery call to start the conversation — no pressure, no commitment. Not sure where you'd begin? We'll help you find the right fit for your business.</p>
+  <a href="contact.html" class="btn-fire">Book a Free Call</a>
+</div>
+
+<footer>
+  <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+    <img src="assets/logo-footer.png" alt="" style="height:28px;width:28px;object-fit:contain;opacity:0.5;">
+  </a>
+  <p>© 2026 Ignite Development &middot; New Hampshire &middot; <a href="privacy.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a></p>
+  <p>contact@ignitedevelopment.net</p>
+</footer>
+<script>
+var t=document.getElementById('navToggle');
+if(t){
+  t.addEventListener('click',function(){var open=document.body.classList.toggle('mobile-menu-open');t.setAttribute('aria-expanded',open);});
+  document.querySelectorAll('nav ul a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('mobile-menu-open');t.setAttribute('aria-expanded',false);});});
+}
+</script>
+</body>
+</html>

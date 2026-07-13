@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Our Team — Ignite Development | New Hampshire AI Consulting</title>
+<meta name="description" content="Meet Joshua Berry and Will Bertoncini, founders of Ignite Development. UNH students building practical AI solutions for New Hampshire businesses.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:0;border:0.5px solid var(--border);}
+.founder{background:var(--black);border-right:0.5px solid var(--border);transition:background 0.2s;display:flex;flex-direction:column;}
+.founder:last-child{border-right:none;}
+.founder:hover{background:var(--orange-glow);}
+.founder-photo{width:100%;aspect-ratio:1/1;overflow:hidden;}
+.founder-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.4s;}
+.founder:hover .founder-photo img{transform:scale(1.02);}
+.founder-info{padding:2rem;}
+.founder-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.08em;color:var(--off-white);margin-bottom:0.3rem;}
+.founder-role{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:0.8rem;}
+.founder p{font-size:0.88rem;color:var(--gray-light);line-height:1.7;margin:0;}
+.together-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+.together-side { display: flex; flex-direction: column; gap: 1.5rem; }
+.award-card { border: 0.5px solid var(--border); background: rgba(255,107,0,0.04); padding: 2rem; }
+.award-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--orange); line-height: 1; margin-bottom: 0.5rem; }
+.award-label { font-size: 0.9rem; color: var(--gray-light); line-height: 1.6; }
+.cert-block { border: 0.5px solid var(--border); padding: 2rem; }
+.cert-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 1rem; }
+.cert-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.cert-tag { border: 0.5px solid rgba(255,107,0,0.3); color: var(--orange); padding: 0.35rem 0.9rem; font-size: 0.78rem; letter-spacing: 0.06em; }
+.founder-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.3rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); text-decoration: none; transition: opacity 0.2s; }
+.founder-link:hover { opacity: 0.65; }
+.unh-strip{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.unh-img{position:relative;overflow:hidden;min-height:320px;}
+.unh-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.88;}
+.unh-content{padding:4rem;display:flex;flex-direction:column;justify-content:center;background:rgba(255,107,0,0.04);border:0.5px solid var(--border);border-left:none;}
+.unh-content p{color:var(--gray-light);font-size:0.95rem;line-height:1.8;margin-bottom:1rem;}
+.unh-content strong{color:var(--off-white);font-weight:500;}
+@media(max-width:768px){
+  .founders{grid-template-columns:1fr;}
+  .founder{border-right:none;border-bottom:0.5px solid var(--border);}
+  .founder:last-child{border-bottom:none;}
+  .together-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .unh-strip{grid-template-columns:1fr;}
+  .unh-content{padding:3rem 1.5rem;border-left:0.5px solid var(--border);border-top:none;}
+}
+</style>
+</head>
+<body>
+<nav><input type="checkbox" id="nav-toggle-cb" class="nav-toggle-cb" aria-hidden="true"><a href="index.html" class="logo-wrap"><img src="assets/logo.png" alt="Ignite Development" style="height:36px;width:auto;object-fit:contain;"></a><ul><li class="nav-dropdown"><span class="nav-drop-label">About <span class="nav-caret">&#9662;</span></span><ul class="nav-submenu"><li><a href="team.html" class="active">Our Team</a></li><li><a href="philosophies.html">Our Philosophies</a></li><li><a href="who-we-serve.html">Who We Serve</a></li></ul></li><li><a href="services.html">Services</a></li><li><a href="process.html">Process</a></li><li><a href="why-now.html">Why Now</a></li><li class="nav-dropdown"><span class="nav-drop-label">Resources <span class="nav-caret">&#9662;</span></span><ul class="nav-submenu"><li><a href="faq.html">FAQ</a></li><li><a href="blog.html">Blog</a></li></ul></li><li><a href="contact.html" class="nav-cta">Get Started</a></li></ul><label class="nav-toggle" for="nav-toggle-cb" aria-label="Menu" role="button" tabindex="0"><span></span><span></span><span></span></label></nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <p class="eyebrow" style="position:relative;">Meet the founders</p>
+  <h1 class="page-title" style="position:relative;">Building the future<br><em>of AI in New Hampshire.</em></h1>
+  <p class="page-sub" style="position:relative;">We're Joshua Berry and Will Bertoncini — UNH students with real-world implementation experience, built on over a decade of partnership and proven execution.</p>
+</div>
+
+<div class="section">
+  <div class="founders">
+    <div class="founder">
+      <div class="founder-photo"><img src="assets/joshua-berry.png" alt="Joshua Berry"></div>
+      <div class="founder-info">
+        <div class="founder-name">Joshua Berry</div>
+        <div class="founder-role">Co-Founder · Finance & Entrepreneurship, UNH</div>
+        <p>Joshua brings hands-on experience deploying AI at the corporate level, paired with a deep passion for business development. For the past few years he has been immersed in studying private equity — with a particular focus on value creation after the deal closes: the operational growth and development that turns an acquisition into a stronger business. That same builder's mindset drives how he approaches every Ignite engagement.</p>
+        <a href="https://www.linkedin.com/in/joshuawberry/" target="_blank" rel="noopener" class="founder-link">Connect on LinkedIn →</a>
+      </div>
+    </div>
+    <div class="founder">
+      <div class="founder-photo"><img src="assets/will-bertoncini.png" alt="Will Bertoncini"></div>
+      <div class="founder-info">
+        <div class="founder-name">Will Bertoncini</div>
+        <div class="founder-role">Co-Founder · Entrepreneurship, UNH</div>
+        <p>Will brings a strong passion for building genuine customer relationships and a creative instinct that sets his work apart. He has managed the business and marketing side of music artists — from brand-building to audience growth — and brings that same creative, relationship-first energy to every client Ignite works with.</p>
+        <a href="https://www.linkedin.com/in/williambertoncini/" target="_blank" rel="noopener" class="founder-link">Connect on LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="eyebrow">Proven partnership</p>
+  <h2 class="section-title">Better together.</h2>
+  <div class="together-grid">
+    <div class="body-text">
+      <p>We have known each other for <strong>over ten years</strong> — long before Ignite ever existed. That decade of trust is why we work as a genuine team, not two people who happened to start a company together.</p>
+      <p>Over those years we have built side by side, taking on <strong>freelance web design, social media management, and small consulting projects</strong> for real clients.</p>
+      <p>That partnership is proven: we won <strong>first place in a statewide New Hampshire digital advertising competition two years in a row</strong>, combining strategy, creativity, and execution as a team.</p>
+      <p>We were also invited to <strong>speak at a statewide business conference</strong> on entrepreneurship — sharing our belief in starting now and getting perfect later, rather than waiting for a perfect moment that never comes.</p>
+    </div>
+    <div class="together-side">
+      <div class="award-card">
+        <div class="award-num">2×</div>
+        <div class="award-label">Back-to-back first-place finishes in a statewide New Hampshire digital advertising competition.</div>
+      </div>
+      <div class="cert-block">
+        <div class="cert-label">Certifications</div>
+        <div class="cert-tags">
+          <span class="cert-tag">AI Boot Camp for SMBs</span>
+          <span class="cert-tag">Digital Marketing</span>
+          <span class="cert-tag">Digital Advertising</span>
+          <span class="cert-tag">Inbound Marketing</span>
+          <span class="cert-tag">Due Diligence Foundations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="unh-strip">
+    <div class="unh-img"><img src="assets/university-of-new-hampshire.png" alt="University of New Hampshire"></div>
+    <div class="unh-content">
+      <p class="eyebrow">Rooted in UNH</p>
+      <h2 class="section-title" style="color:var(--off-white);">Built on campus.<br>Serving the state.</h2>
+      <p>As students at the <strong>University of New Hampshire</strong>, we're not a distant agency pitching AI solutions from afar. We're part of the same community as the businesses we serve — and that matters.</p>
+      <p>We bring the energy, curiosity, and adaptability of people who grew up with technology and are learning at the forefront of it. Combined with real-world implementation experience, that's a powerful combination for your business.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+    <img src="assets/logo-footer.png" alt="" style="height:28px;width:28px;object-fit:contain;opacity:0.5;">
+  </a>
+  <p>© 2026 Ignite Development · New Hampshire · <a href="privacy.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a></p>
+  <p>contact@ignitedevelopment.net</p>
+</footer>
+<script>
+var t=document.getElementById('navToggle');
+if(t){
+  t.addEventListener('click',function(){var open=document.body.classList.toggle('mobile-menu-open');t.setAttribute('aria-expanded',open);});
+  document.querySelectorAll('nav ul a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('mobile-menu-open');t.setAttribute('aria-expanded',false);});});
+}
+</script>
+</body>
+</html>

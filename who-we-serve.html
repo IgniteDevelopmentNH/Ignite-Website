@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Who We Serve — Ignite Development | Industries We Help</title>
+<meta name="description" content="Ignite Development helps consultants, accounting firms, financial advisors, real estate teams, and other professional service firms adopt AI. See how we can help your industry.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.industry-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-top: 2rem; }
+.industry-card { border: 0.5px solid var(--border); padding: 3rem; transition: background 0.2s, box-shadow 0.2s; }
+.industry-card:hover { background: var(--orange-glow); box-shadow: 0 10px 30px -15px rgba(255,107,0,0.25); }
+.industry-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.05em; color: var(--off-white); margin-bottom: 1.5rem; }
+.industry-grid-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+.pain-points { display: flex; flex-direction: column; gap: 1rem; }
+.pain-point { padding: 1rem; background: rgba(255,107,0,0.04); border-left: 2px solid var(--orange); }
+.pain-point-title { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--off-white); margin-bottom: 0.4rem; }
+.pain-point-desc { font-size: 0.88rem; color: var(--gray-light); line-height: 1.6; margin: 0; }
+.solutions-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 0.8rem; margin-top: 0.5rem; }
+.solution-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.solution-tag { border: 1px solid var(--orange); color: var(--orange); padding: 0.5rem 1.1rem; font-size: 0.8rem; letter-spacing: 0.05em; background: rgba(255,107,0,0.08); }
+@media(max-width:768px){
+  .industry-grid-inner { grid-template-columns: 1fr; }
+  .industry-card { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+<nav><input type="checkbox" id="nav-toggle-cb" class="nav-toggle-cb" aria-hidden="true"><a href="index.html" class="logo-wrap"><img src="assets/logo.png" alt="Ignite Development" style="height:36px;width:auto;object-fit:contain;"></a><ul><li class="nav-dropdown"><span class="nav-drop-label">About <span class="nav-caret">&#9662;</span></span><ul class="nav-submenu"><li><a href="team.html">Our Team</a></li><li><a href="philosophies.html">Our Philosophies</a></li><li><a href="who-we-serve.html" class="active">Who We Serve</a></li></ul></li><li><a href="services.html">Services</a></li><li><a href="process.html">Process</a></li><li><a href="why-now.html">Why Now</a></li><li class="nav-dropdown"><span class="nav-drop-label">Resources <span class="nav-caret">&#9662;</span></span><ul class="nav-submenu"><li><a href="faq.html">FAQ</a></li><li><a href="blog.html">Blog</a></li></ul></li><li><a href="contact.html" class="nav-cta">Get Started</a></li></ul><label class="nav-toggle" for="nav-toggle-cb" aria-label="Menu" role="button" tabindex="0"><span></span><span></span><span></span></label></nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <p class="eyebrow" style="position:relative;">Built for professional services</p>
+  <h1 class="page-title" style="position:relative;">We work with<br><em>firms just like yours.</em></h1>
+  <p class="page-sub" style="position:relative;">From consultants and accountants to real estate teams and agencies, we've built AI solutions for professional service firms across New Hampshire. See how our services can help your business.</p>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="industry-grid">
+
+    <div class="industry-card">
+      <div class="industry-name">Consultants</div>
+      <div class="industry-grid-inner">
+        <div class="pain-points">
+          <p style="font-size:0.95rem;color:var(--gray-light);line-height:1.75;margin-bottom:1rem;">Consulting firms juggle client relationships while managing their own operations. Your biggest costs are time on proposals, reports, and internal coordination.</p>
+          <div class="pain-point">
+            <div class="pain-point-title">Proposal & Document Creation</div>
+            <p class="pain-point-desc">Hours spent recreating similar documents for each engagement.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Brand Consistency</div>
+            <p class="pain-point-desc">Deliverables look polished sometimes, inconsistent other times.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Team Coordination</div>
+            <p class="pain-point-desc">Manual follow-up, tracking, and internal process friction.</p>
+          </div>
+        </div>
+        <div>
+          <div class="solutions-label">Best services for consultants</div>
+          <div class="solution-tags">
+            <span class="solution-tag">AI Brand Guide</span>
+            <span class="solution-tag">Internal GPT</span>
+            <span class="solution-tag">Custom Software</span>
+          </div>
+          <p style="font-size:0.9rem;color:var(--gray-light);line-height:1.75;margin-top:1.5rem;">Create on-brand proposals and reports in minutes. Train your team internally. Build a website that wins more clients.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-name">Accounting Firms</div>
+      <div class="industry-grid-inner">
+        <div class="pain-points">
+          <p style="font-size:0.95rem;color:var(--gray-light);line-height:1.75;margin-bottom:1rem;">Accounting is detail-heavy and time-sensitive. You're managing client data, compliance documents, and internal processes that are critical but repetitive.</p>
+          <div class="pain-point">
+            <div class="pain-point-title">Data Entry & Organization</div>
+            <p class="pain-point-desc">Manual data entry and file management eats hours of staff time.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Client Communications</div>
+            <p class="pain-point-desc">Repetitive emails, statements, and explanations to clients.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Compliance Documents</div>
+            <p class="pain-point-desc">Creating consistent, professional client deliverables at scale.</p>
+          </div>
+        </div>
+        <div>
+          <div class="solutions-label">Best services for accounting firms</div>
+          <div class="solution-tags">
+            <span class="solution-tag">Internal GPT</span>
+            <span class="solution-tag">AI Brand Guide</span>
+            <span class="solution-tag">AI Consulting</span>
+          </div>
+          <p style="font-size:0.9rem;color:var(--gray-light);line-height:1.75;margin-top:1.5rem;">Automate data workflows. Create consistent client documents. Give your team time back for higher-value client work.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-name">Financial Advisors</div>
+      <div class="industry-grid-inner">
+        <div class="pain-points">
+          <p style="font-size:0.95rem;color:var(--gray-light);line-height:1.75;margin-bottom:1rem;">Trust and professionalism drive your business. You're balancing client relationships, compliance, and staying current with market information.</p>
+          <div class="pain-point">
+            <div class="pain-point-title">Client Presentations</div>
+            <p class="pain-point-desc">Building custom presentations and reports for each client takes time.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Polished Brand Image</div>
+            <p class="pain-point-desc">Every touchpoint needs to feel premium and trustworthy.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Market Research & Communication</div>
+            <p class="pain-point-desc">Staying informed and keeping clients informed is labor-intensive.</p>
+          </div>
+        </div>
+        <div>
+          <div class="solutions-label">Best services for financial advisors</div>
+          <div class="solution-tags">
+            <span class="solution-tag">AI Brand Guide</span>
+            <span class="solution-tag">Custom Software</span>
+            <span class="solution-tag">AI Consulting</span>
+          </div>
+          <p style="font-size:0.9rem;color:var(--gray-light);line-height:1.75;margin-top:1.5rem;">Keep your brand premium and consistent. Create presentations that impress clients. Build a website that attracts high-quality leads.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-name">Real Estate Teams</div>
+      <div class="industry-grid-inner">
+        <div class="pain-points">
+          <p style="font-size:0.95rem;color:var(--gray-light);line-height:1.75;margin-bottom:1rem;">Real estate is fast-paced and relationship-driven. You're managing listings, client communications, and administrative work across multiple properties.</p>
+          <div class="pain-point">
+            <div class="pain-point-title">Listing & Marketing Materials</div>
+            <p class="pain-point-desc">Creating professional listings and marketing materials for every property.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Client Follow-up</div>
+            <p class="pain-point-desc">Managing communications with buyers, sellers, and past clients manually.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Lead Management</div>
+            <p class="pain-point-desc">Tracking leads and opportunities across multiple team members.</p>
+          </div>
+        </div>
+        <div>
+          <div class="solutions-label">Best services for real estate teams</div>
+          <div class="solution-tags">
+            <span class="solution-tag">Internal GPT</span>
+            <span class="solution-tag">AI Brand Guide</span>
+            <span class="solution-tag">Custom Software</span>
+          </div>
+          <p style="font-size:0.9rem;color:var(--gray-light);line-height:1.75;margin-top:1.5rem;">Automate listing workflows and follow-up. Keep your brand consistent across all materials. Build a site that generates more qualified leads.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-name">Marketing Agencies & Consultants</div>
+      <div class="industry-grid-inner">
+        <div class="pain-points">
+          <p style="font-size:0.95rem;color:var(--gray-light);line-height:1.75;margin-bottom:1rem;">You're selling expertise and creativity. Your challenge is delivering custom strategies and campaigns at scale without drowning in admin work.</p>
+          <div class="pain-point">
+            <div class="pain-point-title">Client Proposals & Decks</div>
+            <p class="pain-point-desc">Creating custom, on-brand proposals and presentations for each prospect.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Campaign Planning & Execution</div>
+            <p class="pain-point-desc">Coordinating strategy, design, and implementation across teams.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Client Reporting</div>
+            <p class="pain-point-desc">Creating consistent, professional reports that showcase impact.</p>
+          </div>
+        </div>
+        <div>
+          <div class="solutions-label">Best services for marketing agencies</div>
+          <div class="solution-tags">
+            <span class="solution-tag">AI Brand Guide</span>
+            <span class="solution-tag">Internal GPT</span>
+            <span class="solution-tag">Custom Software</span>
+          </div>
+          <p style="font-size:0.9rem;color:var(--gray-light);line-height:1.75;margin-top:1.5rem;">Generate proposals and reports faster. Streamline internal workflows. Build a website that showcases your best work.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-name">Insurance Agencies</div>
+      <div class="industry-grid-inner">
+        <div class="pain-points">
+          <p style="font-size:0.95rem;color:var(--gray-light);line-height:1.75;margin-bottom:1rem;">Insurance is relationship and compliance-heavy. You're managing policies, client communications, and ensuring nothing falls through the cracks.</p>
+          <div class="pain-point">
+            <div class="pain-point-title">Policy Documentation</div>
+            <p class="pain-point-desc">Creating consistent, clear documents and summaries for clients.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Client Management</div>
+            <p class="pain-point-desc">Tracking renewals, follow-ups, and client communications manually.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Professional Presence</div>
+            <p class="pain-point-desc">Building trust through professional materials and a strong online presence.</p>
+          </div>
+        </div>
+        <div>
+          <div class="solutions-label">Best services for insurance agencies</div>
+          <div class="solution-tags">
+            <span class="solution-tag">Internal GPT</span>
+            <span class="solution-tag">Custom Software</span>
+            <span class="solution-tag">AI Brand Guide</span>
+          </div>
+          <p style="font-size:0.9rem;color:var(--gray-light);line-height:1.75;margin-top:1.5rem;">Automate renewals and follow-up. Create consistent, professional documents. Build a website that attracts and educates prospects.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-name">Small Law Firms</div>
+      <div class="industry-grid-inner">
+        <div class="pain-points">
+          <p style="font-size:0.95rem;color:var(--gray-light);line-height:1.75;margin-bottom:1rem;">Law is detail-critical and relationship-driven. You're managing client work, documentation, and the business side of running a firm.</p>
+          <div class="pain-point">
+            <div class="pain-point-title">Document Preparation</div>
+            <p class="pain-point-desc">Creating, reviewing, and managing legal documents for multiple cases.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Client Communication</div>
+            <p class="pain-point-desc">Regular updates, status reports, and intake forms for clients.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Case Management</div>
+            <p class="pain-point-desc">Tracking deadlines, documents, and client information across cases.</p>
+          </div>
+        </div>
+        <div>
+          <div class="solutions-label">Best services for law firms</div>
+          <div class="solution-tags">
+            <span class="solution-tag">Internal GPT</span>
+            <span class="solution-tag">AI Consulting</span>
+            <span class="solution-tag">Custom Software</span>
+          </div>
+          <p style="font-size:0.9rem;color:var(--gray-light);line-height:1.75;margin-top:1.5rem;">Streamline case management and document workflows. Build a professional website that brings in qualified leads. Train your team on AI tools.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="industry-card">
+      <div class="industry-name">Home Service Businesses</div>
+      <div class="industry-grid-inner">
+        <div class="pain-points">
+          <p style="font-size:0.95rem;color:var(--gray-light);line-height:1.75;margin-bottom:1rem;">Home services is customer-driven and schedule-heavy. You're managing appointments, quotes, customer communication, and field work coordination.</p>
+          <div class="pain-point">
+            <div class="pain-point-title">Quote & Proposal Creation</div>
+            <p class="pain-point-desc">Creating professional quotes for each job quickly and consistently.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Customer Follow-up</div>
+            <p class="pain-point-desc">Manual reminders, scheduling confirmations, and post-service follow-up.</p>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point-title">Scheduling & Coordination</div>
+            <p class="pain-point-desc">Managing appointments, team schedules, and customer communication.</p>
+          </div>
+        </div>
+        <div>
+          <div class="solutions-label">Best services for home service businesses</div>
+          <div class="solution-tags">
+            <span class="solution-tag">Internal GPT</span>
+            <span class="solution-tag">Custom Software</span>
+            <span class="solution-tag">AI Brand Guide</span>
+          </div>
+          <p style="font-size:0.9rem;color:var(--gray-light);line-height:1.75;margin-top:1.5rem;">Automate scheduling and follow-up. Create consistent, professional quotes. Build a website that brings in repeat and referral business.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section" style="margin-top:3rem;">
+  <p class="eyebrow">Ready to get started?</p>
+  <h2 class="section-title">Let's talk about your business.</h2>
+  <p style="color:var(--gray-light);max-width:580px;margin-bottom:2.5rem;font-size:1rem;line-height:1.75;">No matter your industry, the first step is understanding where AI can create real value for you. Book a free discovery call and we'll walk through your specific workflows, pain points, and opportunities.</p>
+  <a href="contact.html" class="btn-fire">Book a Free Discovery Call</a>
+</div>
+
+<footer>
+  <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+    <img src="assets/logo-footer.png" alt="" style="height:28px;width:28px;object-fit:contain;opacity:0.5;">
+  </a>
+  <p>© 2026 Ignite Development · New Hampshire · <a href="privacy.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a></p>
+  <p>contact@ignitedevelopment.net</p>
+</footer>
+<script>
+var t=document.getElementById('navToggle');
+if(t){
+  t.addEventListener('click',function(){var open=document.body.classList.toggle('mobile-menu-open');t.setAttribute('aria-expanded',open);});
+  document.querySelectorAll('nav ul a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('mobile-menu-open');t.setAttribute('aria-expanded',false);});});
+}
+</script>
+</body>
+</html>

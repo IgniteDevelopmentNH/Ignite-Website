@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Ignite Development</title>
+<meta name="description" content="Frequently asked questions about Ignite Development — our AI brand and operations packages, pricing, process, and how we work with New Hampshire businesses.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  
+
+  .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
+  .contact-details { margin-top: 3rem; border: 0.5px solid var(--border); }
+  .contact-row { display: flex; align-items: flex-start; gap: 1.2rem; padding: 1.2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-icon { color: var(--orange); flex-shrink: 0; width: 20px; text-align: center; margin-top: 0.15rem; }
+  .contact-row-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 0.25rem; }
+  .contact-row-val { font-size: 0.92rem; color: var(--off-white); }
+  .form-block { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-mid); }
+  .form-group input, .form-group textarea, .form-group select { background: rgba(242,237,228,0.04); border: 0.5px solid var(--border); color: var(--off-white); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 300; padding: 0.9rem 1.2rem; outline: none; transition: border-color 0.2s; width: 100%; resize: vertical; -webkit-appearance: none; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: rgba(255,107,0,0.5); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray-mid); }
+  .form-group select option { background: #1a1a18; color: var(--off-white); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .submit-btn { background: var(--orange); color: var(--black); border: none; padding: 1.1rem 2.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; align-self: flex-start; margin-top: 0.5rem; }
+  .submit-btn:hover { background: var(--orange-dim); }
+  .form-note { font-size: 0.78rem; color: var(--gray-mid); }
+  @media (max-width: 768px) {
+    .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  .privacy-h { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.04em; color: var(--off-white); margin: 2.8rem 0 1rem; }
+  .privacy-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin: 0 0 1.4rem; }
+  .privacy-list li { position: relative; padding-left: 1.5rem; color: var(--gray-light); font-size: 1rem; line-height: 1.7; }
+  .privacy-list li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+  .privacy-list li strong { color: var(--off-white); font-weight: 500; }
+  .privacy-meta { color: var(--gray-mid); font-size: 0.8rem; letter-spacing: 0.04em; margin-bottom: 2.5rem; }
+  
+  .faq-item { border-bottom: 0.5px solid var(--border); }
+  .faq-item:first-of-type { border-top: 0.5px solid var(--border); }
+  .faq-item summary { list-style: none; cursor: pointer; padding: 1.6rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; font-size: 1.05rem; color: var(--off-white); font-weight: 400; line-height: 1.45; transition: color 0.2s; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; color: var(--orange); flex-shrink: 0; line-height: 1; }
+  .faq-item[open] summary::after { content: '\2013'; }
+  .faq-item summary:hover { color: var(--orange); }
+  .faq-a { padding: 0 0 1.9rem; max-width: 720px; }
+  .faq-a p { color: var(--gray-light); font-size: 0.98rem; line-height: 1.85; margin: 0; }
+  .faq-cta { text-align: center; margin-top: 4rem; padding-top: 3rem; border-top: 0.5px solid var(--border); }
+  .faq-cta h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.03em; color: var(--off-white); margin-bottom: 0.6rem; }
+  .faq-cta p { color: var(--gray-light); font-size: 0.95rem; margin-bottom: 1.8rem; }
+</style>
+</head>
+<body>
+<nav><input type="checkbox" id="nav-toggle-cb" class="nav-toggle-cb" aria-hidden="true">
+  <a href="index.html" class="logo-wrap"><img src="assets/logo.png" alt="Ignite Development" style="height:36px;width:auto;object-fit:contain;"></a>
+  <ul><li class="nav-dropdown"><span class="nav-drop-label">About <span class="nav-caret">&#9662;</span></span><ul class="nav-submenu"><li><a href="team.html">Our Team</a></li><li><a href="philosophies.html">Our Philosophies</a></li><li><a href="who-we-serve.html">Who We Serve</a></li></ul></li><li><a href="services.html">Services</a></li><li><a href="process.html">Process</a></li><li><a href="why-now.html">Why Now</a></li><li class="nav-dropdown"><span class="nav-drop-label">Resources <span class="nav-caret">&#9662;</span></span><ul class="nav-submenu"><li><a href="faq.html" class="active">FAQ</a></li><li><a href="blog.html">Blog</a></li></ul></li><li><a href="contact.html" class="nav-cta">Get Started</a></li></ul><label class="nav-toggle" for="nav-toggle-cb" aria-label="Menu" role="button" tabindex="0"><span></span><span></span><span></span></label>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <p class="eyebrow">Resources</p>
+  <h1 class="page-title">Frequently asked<br><em>questions.</em></h1>
+  <p class="page-sub">Everything you might want to know about how we work, what we build, and what it costs. Still have a question? We are one conversation away.</p>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div style="max-width:820px;">
+    <details class="faq-item">
+      <summary>What exactly is a brand agent?</summary>
+      <div class="faq-a"><p>A brand agent is a custom AI assistant trained specifically on your business &mdash; your colors, fonts, tone of voice, and document styles. Instead of starting from scratch every time you need to create a proposal, presentation, or internal document, you simply ask the agent and it produces something that already looks and sounds like your business. Think of it as a team member who knows your brand better than anyone.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Do I need my own AI account or software?</summary>
+      <div class="faq-a"><p>For our Brand Development package, you will need a Claude account to access your brand agent. Claude offers paid plans starting at $20/month. We handle all the setup and training &mdash; you just need the account to access it. We will walk you through everything so it is ready to use from day one.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>How long does the process take?</summary>
+      <div class="faq-a"><p>Most projects are delivered within one to two weeks from your discovery call. The timeline depends on how quickly we can connect to understand your business and gather any existing materials. We move fast &mdash; the back and forth with you is usually the longest part.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What happens after the project is delivered?</summary>
+      <div class="faq-a"><p>We do not disappear after delivery. We offer a $100/month maintenance plan that covers hosting, ongoing support, and up to three content or site updates per month. As your business evolves your AI tools can evolve with it.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Do I need to know anything about AI to work with you?</summary>
+      <div class="faq-a"><p>Not at all. That is exactly why we exist. You do not need any technical knowledge &mdash; we handle everything from setup to deployment. If you can send an email you can use what we build for you.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Are you able to work with any type of business?</summary>
+      <div class="faq-a"><p>We work best with professional service firms and growing small businesses in New Hampshire &mdash; consultants, real estate teams, accounting firms, financial advisors, and similar. That said, if you are outside that profile we are always happy to have a conversation and see if we can help.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What makes Ignite different from just using ChatGPT myself?</summary>
+      <div class="faq-a"><p>ChatGPT is a general purpose tool &mdash; it does not know your business, your brand, your processes, or your clients. What we build is trained specifically on how your business operates and what it looks like. The result is work that actually sounds and looks like you, not a generic AI response. We also handle the entire setup, training, and deployment so you are not spending hours figuring it out yourself.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>How is pricing determined?</summary>
+      <div class="faq-a"><p>We offer two packages at $1,500 each as launch pricing &mdash; this rate will increase as our availability fills. Every engagement starts with a free discovery call where we learn about your business and confirm which package fits. If your needs fall outside a standard package we will build a proposal around what you actually need.</p></div>
+    </details>
+
+    <div class="faq-cta">
+      <h3>Still have questions?</h3>
+      <p>Book a free discovery call &mdash; no pressure, just an honest conversation.</p>
+      <a href="contact.html" class="btn-fire">Book a Free Call &rarr;</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+    <img src="assets/logo-footer.png" alt="Ignite Development" style="height:28px;width:28px;object-fit:contain;opacity:0.5;">
+  </a>
+  <p>© 2026 Ignite Development &middot; New Hampshire &middot; <a href="privacy.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a></p>
+  <p>contact@ignitedevelopment.net</p>
+</footer>
+<script>
+var t=document.getElementById('navToggle');
+if(t){
+  t.addEventListener('click',function(){var open=document.body.classList.toggle('mobile-menu-open');t.setAttribute('aria-expanded',open);});
+  document.querySelectorAll('nav ul a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('mobile-menu-open');t.setAttribute('aria-expanded',false);});});
+}
+</script>
+</body>
+</html>
