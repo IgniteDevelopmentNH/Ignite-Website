@@ -185,3 +185,42 @@
     .btn-primary::after { display:none; }
     .scroll-progress > span { transition:none; }
   }
+
+/* ============================================================
+   MOBILE REFINEMENTS (<=768px)
+   Containment + tighter vertical rhythm. Desktop is untouched.
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* --- No horizontal scroll ------------------------------------
+     body already had overflow-x:hidden, but with html at
+     overflow:visible iOS Safari still lets you pan the page.
+     The real overflow came from .sf-inner staying 2-up at 375px:
+     contact@ignitedevelopment.net can't wrap, so it forced the
+     document to 431px. One column removes the cause; the clamps
+     below are the safety net. */
+  html { overflow-x: hidden; }
+  body { overflow-x: hidden; width: 100%; }
+  .site-footer .sf-inner { grid-template-columns: 1fr; }
+  .site-footer a, .site-footer p { overflow-wrap: anywhere; }
+
+  /* --- Footer: single column, centered -------------------------- */
+  .site-footer .sf-inner { padding: 2.25rem 1.25rem 1.25rem; gap: 1.75rem; text-align: center; }
+  .site-footer .sf-brand p { margin: 0.9rem auto 1.1rem; max-width: 34ch; }
+  .site-footer .sf-brand .logo-wrap { justify-content: center; }
+  .site-footer .sf-social { justify-content: center; }
+  .site-footer h4 { margin-bottom: 0.75rem; }
+  .site-footer ul { gap: 0.6rem; }
+  .site-footer .sf-bar { flex-direction: column; gap: 0.45rem; text-align: center; padding: 1.1rem 1.25rem; }
+
+  /* --- Tighter vertical rhythm ---------------------------------- */
+  .section { padding: 2.75rem 1.25rem; }
+  .page-hero { padding: 6.5rem 1.25rem 2.25rem; }
+  .page-sub { margin-top: 0.9rem; font-size: 1rem; line-height: 1.7; }
+  .eyebrow { margin-bottom: 0.55rem; }
+  .section-title { margin-bottom: 1rem; }
+  .sec-title { margin: 0.6rem 0 0.85rem; }
+  .lead { font-size: 1rem; line-height: 1.75; }
+  .body-text p { margin-bottom: 1rem; line-height: 1.75; }
+  footer { padding: 1.5rem 1.25rem; }
+}

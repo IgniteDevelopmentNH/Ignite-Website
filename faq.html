@@ -36,6 +36,15 @@
     .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
     .form-row { grid-template-columns: 1fr; }
   }
+  @media (max-width: 768px) {
+    /* --- tighter mobile rhythm --- */
+    .faq-item summary { padding: 1.05rem 0; font-size: 1rem; gap: 1rem; }
+    .faq-a { padding: 0 0 1.15rem; }
+    .faq-a p { font-size: 0.94rem; line-height: 1.75; }
+    .faq-cta { margin-top: 2rem; padding-top: 1.75rem; }
+    .faq-cta h3 { font-size: 1.7rem; }
+    .faq-cta p { margin-bottom: 1.2rem; font-size: 0.92rem; }
+  }
   .privacy-h { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.04em; color: var(--off-white); margin: 2.8rem 0 1rem; }
   .privacy-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin: 0 0 1.4rem; }
   .privacy-list li { position: relative; padding-left: 1.5rem; color: var(--gray-light); font-size: 1rem; line-height: 1.7; }

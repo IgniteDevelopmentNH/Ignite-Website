@@ -49,8 +49,22 @@
   .svc-block .build-card { order:2; }
 }
 @media (max-width:768px){
-  .svc-hero { padding:7.5rem 1.5rem 2rem; }
-  .bc-grid { grid-template-columns:1fr; }
+  .svc-hero { padding:6.5rem 1.25rem 1.75rem; }
+  .bc-grid { grid-template-columns:1fr; gap:0.7rem; }
+
+  /* --- tighter mobile rhythm --- */
+  .svc-hero h1 { margin:0.8rem 0; }
+  .svc-hero p { font-size:1rem; line-height:1.7; }
+  .svc-block { gap:1.5rem; padding:2rem 0; }
+  .svc-head { margin-bottom:1rem; gap:0.8rem; }
+  .svc-block h2 { margin-bottom:0.85rem; }
+  .svc-block .desc { font-size:1rem; line-height:1.75; margin-bottom:1.1rem; }
+  .build-card .bc-title { margin-bottom:1rem; }
+  .ai-note { padding:1.1rem 1.2rem; margin-top:1.2rem; }
+  .ai-note p { font-size:0.94rem; line-height:1.65; }
+  .svc-cta p { font-size:1rem; margin-bottom:1.4rem; }
+  /* clear the fixed "Book a Free Discovery Call" bar */
+  body { padding-bottom:4.75rem; }
 }
 </style>
 </head>

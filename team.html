@@ -43,9 +43,24 @@
   .founders{grid-template-columns:1fr;}
   .founder{border-right:none;border-bottom:0.5px solid var(--border);}
   .founder:last-child{border-bottom:none;}
-  .together-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .together-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .unh-strip{grid-template-columns:1fr;}
   .unh-content{padding:3rem 1.5rem;border-left:0.5px solid var(--border);border-top:none;}
+
+  /* --- tighter mobile rhythm --- */
+  .founder-info { padding: 1.3rem 1.25rem; }
+  .founder-name { font-size: 1.45rem; }
+  .founder-role { margin-bottom: 0.55rem; }
+  .founder p { font-size: 0.9rem; line-height: 1.65; }
+  .founder-link { margin-top: 0.9rem; }
+  .together-side { gap: 1rem; }
+  .award-card, .cert-block { padding: 1.4rem; }
+  .award-num { font-size: 2.4rem; }
+
+  /* "Rooted in Southern New Hampshire" is desktop-only — too much
+     for a phone. Hidden here, untouched at >768px. */
+  .nh-section { display: none; }
+  .section:has(+ .nh-section) { border-bottom: none; }
 }
 </style>
 </head>
@@ -111,7 +126,7 @@
   </div>
 </div>
 
-<div class="section" style="border-bottom:none;">
+<div class="section nh-section" style="border-bottom:none;">
   <div class="unh-strip">
     <div class="unh-img"><img src="assets/nh-ignite.png" alt="Ignite Development — rooted in New Hampshire"></div>
     <div class="unh-content">

@@ -28,13 +28,58 @@
   .tl-item:hover { background: var(--orange-glow); }
   .tl-num { font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; color: var(--orange); margin-bottom: 0.4rem; }
   .tl-label { font-size: 0.82rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.06em; }
+  /* Flip-card scaffolding is inert on desktop: the faces are plain
+     blocks and only the front is shown, so the bar renders as before. */
+  .tl-hint, .tl-back { display: none; }
   .closing { text-align: center; background: rgba(255,107,0,0.03); padding: 6rem 3rem; border-top: 0.5px solid var(--border); }
   .closing blockquote { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0.03em; line-height: 1.1; max-width: 800px; margin: 0 auto 2rem; color: var(--off-white); }
   .closing blockquote em { font-style: normal; color: var(--orange); }
   @media (max-width: 768px) {
-    .step-block { grid-template-columns: 1fr; gap: 1rem; padding: 3rem 0; }
-    .timeline-bar { flex-wrap: wrap; }
-    .tl-item { flex: 0 0 50%; border-bottom: 0.5px solid var(--border); }
+    /* The step detail now lives on the back of each card. */
+    .step-block { display: none; }
+
+    .timeline-bar { display: block; border: none; margin-bottom: 0; perspective: 1200px; }
+    .tl-item {
+      flex: none; width: 100%; margin: 0 0 0.7rem; padding: 0;
+      border: 0.5px solid var(--border); border-right: none; border-radius: 10px;
+      background: var(--black); overflow: hidden; cursor: pointer;
+      height: 104px; transition: height 0.5s var(--ease), border-color 0.3s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-item.flipped { border-color: rgba(255,107,0,0.35); }
+    .tl-item::before { display: none; }
+    .tl-item:hover { background: var(--black); }
+
+    .tl-inner { position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d; transition: transform 0.55s var(--ease); }
+    .tl-item.flipped .tl-inner { transform: rotateY(180deg); }
+
+    .tl-face { position: absolute; inset: 0; padding: 1.1rem 1.25rem;
+      display: flex; flex-direction: column; justify-content: center;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .tl-front { align-items: center; text-align: center; }
+    .tl-back { transform: rotateY(180deg); text-align: left;
+      background: rgba(255,107,0,0.045); overflow: hidden; }
+
+    .tl-num { margin-bottom: 0.3rem; }
+    .tl-label { font-size: 1.05rem; letter-spacing: 0.08em; }
+    .tl-hint { display: inline-block; margin-top: 0.55rem; font-size: 0.64rem;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange);
+      opacity: 0.85; transition: opacity 0.2s; }
+    .tl-item.flipped .tl-hint { opacity: 0; }
+
+    .tl-back-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem;
+      letter-spacing: 0.07em; color: var(--orange); margin-bottom: 0.45rem; }
+    .tl-back p { font-size: 0.86rem; line-height: 1.6; color: var(--gray-light); margin-bottom: 0.6rem; }
+    .tl-back p:last-child { margin-bottom: 0; }
+
+    .closing { padding: 2.75rem 1.25rem; }
+    .closing blockquote { margin-bottom: 1.4rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tl-inner { transition: none; }
+    .tl-item { transition: none; }
   }
   /* --- visual polish --- */
   @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
@@ -71,12 +116,80 @@
 </div>
 
 <div class="section" style="border-bottom:none;">
+  <!-- On mobile these become tap-to-flip cards; the .tl-back content is
+       hidden at >768px, where the full .step-block sections below carry
+       the detail instead. -->
   <div class="timeline-bar">
-    <div class="tl-item"><div class="tl-num">Step 01</div><div class="tl-label">Discover</div></div>
-    <div class="tl-item"><div class="tl-num">Step 02</div><div class="tl-label">Design</div></div>
-    <div class="tl-item"><div class="tl-num">Step 03</div><div class="tl-label">Build</div></div>
-    <div class="tl-item"><div class="tl-num">Step 04</div><div class="tl-label">Deploy</div></div>
-    <div class="tl-item"><div class="tl-num">Step 05</div><div class="tl-label">Improve</div></div>
+    <div class="tl-item">
+      <div class="tl-inner">
+        <div class="tl-face tl-front">
+          <div class="tl-num">Step 01</div>
+          <div class="tl-label">Discover</div>
+          <span class="tl-hint">Tap to Learn More</span>
+        </div>
+        <div class="tl-face tl-back"><div class="tl-back-in">
+          <div class="tl-back-label">Discover</div>
+          <p>We start by understanding how your business actually operates &mdash; the day-to-day workflows, where the friction is, and which problems are worth solving first.</p>
+          <p>Not a surface-level questionnaire. We ask the right questions and listen, because good software starts with a clear picture of the business.</p>
+        </div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-inner">
+        <div class="tl-face tl-front">
+          <div class="tl-num">Step 02</div>
+          <div class="tl-label">Design</div>
+          <span class="tl-hint">Tap to Learn More</span>
+        </div>
+        <div class="tl-face tl-back"><div class="tl-back-in">
+          <div class="tl-back-label">Design</div>
+          <p>We turn what we learned into a clear software concept &mdash; the features, the user experience, and a build plan mapped to your workflows.</p>
+          <p>You'll know exactly what we're building and why before development starts. A concrete plan, not vague promises.</p>
+        </div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-inner">
+        <div class="tl-face tl-front">
+          <div class="tl-num">Step 03</div>
+          <div class="tl-label">Build</div>
+          <span class="tl-hint">Tap to Learn More</span>
+        </div>
+        <div class="tl-face tl-back"><div class="tl-back-in">
+          <div class="tl-back-label">Build</div>
+          <p>We develop your custom application &mdash; the business logic, integrations, and interfaces your team will actually use. AI is built in wherever it adds genuine value.</p>
+          <p>We stay in close communication throughout, with regular updates and checkpoints so nothing drifts off track.</p>
+        </div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-inner">
+        <div class="tl-face tl-front">
+          <div class="tl-num">Step 04</div>
+          <div class="tl-label">Deploy</div>
+          <span class="tl-hint">Tap to Learn More</span>
+        </div>
+        <div class="tl-face tl-back"><div class="tl-back-in">
+          <div class="tl-back-label">Deploy</div>
+          <p>We launch on secure cloud infrastructure built for reliability and scale, then handle user setup, thorough testing, and training.</p>
+          <p>Your software goes live in your real environment, with your actual data and workflows, fully supported through the transition.</p>
+        </div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-inner">
+        <div class="tl-face tl-front">
+          <div class="tl-num">Step 05</div>
+          <div class="tl-label">Improve</div>
+          <span class="tl-hint">Tap to Learn More</span>
+        </div>
+        <div class="tl-face tl-back"><div class="tl-back-in">
+          <div class="tl-back-label">Improve</div>
+          <p>After launch we keep supporting the system with updates, improvements, and new features as your business evolves and grows.</p>
+          <p>Custom software isn't a one-time project &mdash; it's an operational asset. We stay available to optimize and expand it.</p>
+        </div></div>
+      </div>
+    </div>
   </div>
 
   <div class="step-block">
@@ -173,6 +286,54 @@ if(t){
   t.addEventListener('click',function(){var open=document.body.classList.toggle('mobile-menu-open');t.setAttribute('aria-expanded',open);});
   document.querySelectorAll('nav ul a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('mobile-menu-open');t.setAttribute('aria-expanded',false);});});
 }
+
+/* Mobile step cards: tap to flip. Only one card is ever face-down —
+   opening a card reverts any other. No-op above 768px, where the
+   .step-block sections carry the detail instead. */
+(function(){
+  var mq = window.matchMedia('(max-width: 768px)');
+  var items = Array.prototype.slice.call(document.querySelectorAll('.tl-item'));
+  if(!items.length) return;
+
+  function collapse(item){
+    item.classList.remove('flipped');
+    item.setAttribute('aria-expanded','false');
+    item.style.height = '';
+  }
+  function expand(item){
+    var inner = item.querySelector('.tl-back-in');
+    var face  = item.querySelector('.tl-back');
+    var cs    = window.getComputedStyle(face);
+    var pad   = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+    item.classList.add('flipped');
+    item.setAttribute('aria-expanded','true');
+    item.style.height = Math.ceil(inner.scrollHeight + pad) + 'px';
+  }
+  function toggle(item){
+    if(!mq.matches) return;
+    var wasOpen = item.classList.contains('flipped');
+    items.forEach(collapse);
+    if(!wasOpen) expand(item);
+  }
+
+  items.forEach(function(item){
+    item.setAttribute('role','button');
+    item.setAttribute('tabindex','0');
+    item.setAttribute('aria-expanded','false');
+    item.addEventListener('click', function(){ toggle(item); });
+    item.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){ e.preventDefault(); toggle(item); }
+    });
+  });
+
+  // Re-measure an open card on rotate; reset everything when leaving mobile.
+  var onChange = function(){ items.forEach(collapse); };
+  if(mq.addEventListener) mq.addEventListener('change', onChange); else mq.addListener(onChange);
+  window.addEventListener('resize', function(){
+    if(!mq.matches) return;
+    items.forEach(function(item){ if(item.classList.contains('flipped')) expand(item); });
+  });
+})();
 </script>
 </body>
 </html>
