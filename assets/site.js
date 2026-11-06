@@ -96,6 +96,7 @@
   const links = story && $('.story-links', story);
   const shell = story && $('.shell', story);
   const meter = story && $('.story-meter i', story);
+  const track = story && $('.story-meter b', story);
   const scrubs = $$('.scrub').map((el) => {
     const words = el.textContent.trim().split(/\s+/);
     el.setAttribute('aria-label', el.textContent.trim());
@@ -128,6 +129,8 @@
     links.style.opacity = (0.75 * (1 - clamp((p - 0.26) / 0.16))).toFixed(3);
     shell.style.opacity = clamp((p - 0.5) / 0.18).toFixed(3);
     meter.style.transform = `scaleX(${p.toFixed(4)})`;
+    track.style.setProperty('--m', p.toFixed(4));
+    track.setAttribute('aria-valuenow', Math.round(p * 100));
     story.classList.toggle('done', p > 0.72);
     const ranges = [[-1, 0, 0.26, 0.32], [0.28, 0.34, 0.56, 0.62], [0.6, 0.66, 2, 3]];
     steps.forEach((s, i) => {
@@ -188,6 +191,42 @@
   addEventListener('scroll', request, { passive: true });
   addEventListener('resize', request, { passive: true });
   render();
+
+  /* ---------- Story slider: tap or drag to move through the scene ---------- */
+  if (track && !still) {
+    const seek = (p, behavior) => {
+      const r = story.getBoundingClientRect();
+      scrollTo({ top: scrollY + r.top + clamp(p) * (r.height - innerHeight), behavior });
+    };
+    const at = (e) => {
+      const r = track.getBoundingClientRect();
+      return (e.clientX - r.left) / r.width;
+    };
+    let startX = null;
+    let dragging = false;
+    track.addEventListener('pointerdown', (e) => {
+      startX = e.clientX;
+      dragging = false;
+      track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', (e) => {
+      if (startX === null) return;
+      if (Math.abs(e.clientX - startX) > 4) dragging = true;
+      if (dragging) seek(at(e), 'instant');
+    });
+    track.addEventListener('pointerup', (e) => {
+      if (startX !== null && !dragging) seek(at(e), 'smooth');
+      startX = null;
+    });
+    track.addEventListener('pointercancel', () => { startX = null; });
+    track.addEventListener('keydown', (e) => {
+      const now = Number(track.getAttribute('aria-valuenow')) / 100;
+      const next = { ArrowRight: now + 0.1, ArrowUp: now + 0.1, ArrowLeft: now - 0.1, ArrowDown: now - 0.1, Home: 0, End: 1 }[e.key];
+      if (next === undefined) return;
+      e.preventDefault();
+      seek(next, 'smooth');
+    });
+  }
 
   /* ---------- Pointer spotlight (mouse only) ---------- */
   if (matchMedia('(hover: hover) and (pointer: fine)').matches) {

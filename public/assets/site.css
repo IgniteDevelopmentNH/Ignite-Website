@@ -139,8 +139,11 @@ em { font-style: normal; color: var(--orange); }
 .tile:nth-of-type(7) { --x0: 58; --y0: 58; --r0: 6; --x1: 50.67; --y1: 57; }
 .tile:nth-of-type(8) { --x0: 22; --y0: 66; --r0: -9; --x1: 75; --y1: 57; }
 .story-meter { position: absolute; left: var(--pad); right: var(--pad); bottom: 1.3rem; display: flex; align-items: center; gap: 1rem; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gray-light); }
-.story-meter b { position: relative; flex: 1; height: 1px; background: var(--line-2); font-weight: 400; }
+.story-meter b { --m: 0; position: relative; flex: 1; height: 2px; background: var(--line-2); font-weight: 400; cursor: pointer; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+.story-meter b::before { content: ''; position: absolute; inset: -1.1rem 0; }
+.story-meter b:focus-visible { outline: 2px solid var(--orange); outline-offset: 8px; }
 .story-meter i { position: absolute; inset: 0; background: var(--orange); transform: scaleX(0); transform-origin: 0 50%; }
+.story-thumb { position: absolute; top: 50%; left: calc(var(--m) * 100%); width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 3px rgba(255, 107, 0, .22); pointer-events: none; }
 html:not(.js) .story, .story.is-static { height: auto; }
 html:not(.js) .story-pin, .is-static .story-pin { position: static; height: auto; display: block; overflow: visible; }
 html:not(.js) .story-copy, .is-static .story-copy { min-height: 0; margin-bottom: 2rem; }
