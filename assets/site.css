@@ -564,3 +564,17 @@ html:not(.js) .tm-m, html:not(.js) .tm-new { opacity: 1; animation: none; }
   .nav-links a:not(.nav-cta) { font-size: .7rem; letter-spacing: .06em; }
   .nav-cta { padding: .55rem .7rem; font-size: .66rem; letter-spacing: .05em; white-space: nowrap; }
 }
+
+/* Portfolio icons and "And more" box */
+.pf-ico { display: block; width: 2.5rem; height: 2.5rem; margin-bottom: clamp(1rem, 2vw, 1.6rem); fill: none; stroke: var(--orange); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; transition: transform .35s var(--ease); }
+.why-i:hover .pf-ico { transform: translateY(-3px); }
+.why .why-i.pf-more { padding: clamp(1.4rem, 2.6vw, 2.2rem); border: 1px solid var(--orange); border-radius: 2px; background: var(--panel-2); }
+.pf-more p { max-width: 62ch; }
+@media (min-width: 981px) {
+  .why .why-i.pf-more { grid-column: 1 / -1; display: flex; align-items: center; gap: clamp(1.2rem, 2.4vw, 2rem); margin-top: clamp(1.6rem, 3vw, 2.4rem); }
+  .pf-more .pf-ico { flex: none; width: 3rem; height: 3rem; margin-bottom: 0; }
+  .pf-more h2 { margin-bottom: .4rem; }
+}
+@media (max-width: 780px) {
+  .why .why-i.pf-more { margin-top: 1.2rem; }
+}
