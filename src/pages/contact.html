@@ -1,0 +1,25 @@
+<!--{"title":"Contact | Ignite Development","desc":"Tell Ignite Development about your business and start a conversation about your software needs.","noCta":true}-->
+<section class="sec" style="padding-top:clamp(7.5rem,12vw,10rem)">
+  <div class="wrap contact">
+    <div>
+      <span class="kick">Contact</span>
+      <h1 data-split>Let's talk about <em>your software.</em></h1>
+      <p class="lead rv" style="margin-top:1.6rem">You don't need a technical plan. Tell us about your business and what you'd like to improve, and we'll take it from there.</p>
+      <div class="contact-info rv"><a href="mailto:contact@ignitedevelopment.net">contact@ignitedevelopment.net</a><span class="muted">New Hampshire</span></div>
+    </div>
+    <form class="form rv" id="contactForm" action="https://formspree.io/f/xykaydwk" method="POST">
+      <div class="f"><label for="first">First name</label><input id="first" name="first_name" autocomplete="given-name" required></div>
+      <div class="f"><label for="last">Last name</label><input id="last" name="last_name" autocomplete="family-name" required></div>
+      <div class="f"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+      <div class="f"><label for="company">Company <span>(optional)</span></label><input id="company" name="company" autocomplete="organization"></div>
+      <div class="f full"><label for="message">What would you like to improve?</label><textarea id="message" name="message" rows="4" placeholder="A rough idea is fine." required></textarea></div>
+      <div class="hp" aria-hidden="true"><label for="gotcha">Leave this field empty</label><input id="gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+      <input type="hidden" name="_subject" value="New inquiry from ignitedevelopment.net">
+      <div class="form-end">
+        <button class="btn" type="submit">Send Message <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+        <p class="form-status" id="formStatus" role="status"></p>
+      </div>
+      <p class="f full small">By sending this form you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+    </form>
+  </div>
+</section>
