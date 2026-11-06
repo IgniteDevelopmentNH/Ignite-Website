@@ -1,13 +1,12 @@
 // Zero-dependency static build: wraps src/pages/*.html in src/layout.html,
-// expands {{> partial}} includes, and writes the finished site to dist/.
-import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+// expands {{> partial}} includes, and writes the finished site to the repo root,
+// which is what the host serves. Commit the generated files along with the sources.
+import { cpSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 
 const read = (p) => readFileSync(new URL(p, import.meta.url), 'utf8');
-const dist = new URL('./dist/', import.meta.url);
+const dist = new URL('./', import.meta.url);
 
-rmSync(dist, { recursive: true, force: true });
-mkdirSync(dist, { recursive: true });
 cpSync(new URL('./public/', import.meta.url), dist, { recursive: true });
 
 // Fingerprint CSS/JS so they can be cached for a year and still update on deploy.
@@ -47,4 +46,4 @@ for (const file of readdirSync(new URL('./src/pages/', import.meta.url))) {
   writeFileSync(new URL(file, dist), html);
 }
 
-console.log(`Built ${readdirSync(new URL('./src/pages/', import.meta.url)).length} pages to dist/ (v${version})`);
+console.log(`Built ${readdirSync(new URL('./src/pages/', import.meta.url)).length} pages to the repo root (v${version})`);

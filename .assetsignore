@@ -1,0 +1,10 @@
+.git
+.gitignore
+.assetsignore
+.claude
+README.md
+build.mjs
+serve.mjs
+src
+public
+dist
