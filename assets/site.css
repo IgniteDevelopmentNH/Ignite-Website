@@ -53,7 +53,10 @@ em { font-style: normal; color: var(--orange); }
 /* ---------- Nav ---------- */
 .progress { position: fixed; inset: 0 0 auto; height: 2px; z-index: 210; background: var(--orange); transform: scaleX(0); transform-origin: 0 50%; pointer-events: none; }
 .nav { position: fixed; inset: 0 0 auto; z-index: 200; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem var(--pad); transition: background .3s, padding .3s, box-shadow .3s; }
-.nav.scrolled { background: rgba(8, 8, 7, .88); backdrop-filter: blur(12px); padding-block: .8rem; box-shadow: 0 1px 0 var(--line); }
+.nav.scrolled { padding-block: .8rem; box-shadow: 0 1px 0 var(--line); }
+/* The blur lives on this layer: on .nav itself it would shrink the fixed phone menu to the header's size. */
+.nav::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(8, 8, 7, .88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.nav.scrolled::before { opacity: 1; }
 .nav-logo { position: relative; z-index: 2; }
 .nav-logo img { height: 30px; width: auto; }
 .nav-links { display: flex; align-items: center; gap: clamp(1.4rem, 3vw, 2.8rem); }
@@ -480,6 +483,7 @@ html:not(.js) .tl-step { opacity: 1; }
   .nav-btn { display: block; }
   .nav-logo img { height: 25px; }
   .nav-links { position: fixed; inset: 0; z-index: 1; flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.1rem; padding: 5rem var(--pad) 3rem; background: var(--black); visibility: hidden; opacity: 0; transition: opacity .3s, visibility .3s; }
+  .nav-links { justify-content: safe center; overflow-y: auto; overscroll-behavior: contain; }
   .menu-open .nav-links { visibility: visible; opacity: 1; }
   .menu-open body { overflow: hidden; }
   .nav-links a:not(.nav-cta) { font: 400 3.8rem/1 var(--display); letter-spacing: .01em; text-transform: none; transform: translateY(16px); transition: transform .5s var(--ease); }
