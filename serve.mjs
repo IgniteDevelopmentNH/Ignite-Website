@@ -13,7 +13,9 @@ const types = {
 
 createServer(async (req, res) => {
   const path = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname)).replace(/^[\\/]+/, '');
-  const candidates = !path || path === '.' ? ['index.html'] : extname(path) ? [path] : [`${path}.html`];
+  // /meet/1234 is the scheduler page. Its API needs the Worker: use `npx wrangler dev` for that.
+  const page = /^meet[\/]\d{4}$/.test(path) ? 'meet' : path;
+  const candidates = !page || page === '.' ? ['index.html'] : extname(page) ? [page] : [`${page}.html`];
   for (const candidate of candidates) {
     try {
       const data = await readFile(join(root, candidate));

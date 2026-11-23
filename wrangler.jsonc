@@ -1,0 +1,21 @@
+// Cloudflare Worker for ignitedevelopment.net. The static site is served straight from
+// the repo root; the Worker only runs for the /meet scheduler and its /api routes.
+{
+  "$schema": "https://unpkg.com/wrangler@4.40.0/config-schema.json",
+  "name": "ignite-site",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-07-13",
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*", "/meet/*"]
+  },
+  // Wrangler creates this database on the first deploy if it doesn't exist yet.
+  // The Worker creates its own tables, so there are no migrations to run.
+  "d1_databases": [
+    { "binding": "DB", "database_name": "ignite-meet" }
+  ]
+  // ADMIN_PASSWORD is a secret: `npx wrangler secret put ADMIN_PASSWORD`
+}

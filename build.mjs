@@ -11,14 +11,15 @@ cpSync(new URL('./public/', import.meta.url), dist, { recursive: true });
 
 // Fingerprint CSS/JS so they can be cached for a year and still update on deploy.
 const version = createHash('sha1')
-  .update(read('./public/assets/site.css') + read('./public/assets/site.js'))
+  .update(['site.css', 'site.js', 'meet.css', 'meet.js'].map((f) => read(`./public/assets/${f}`)).join(''))
   .digest('hex')
   .slice(0, 10);
 
 const expand = (html) =>
   html.replace(/\{\{>\s*([\w-]+)\s*\}\}/g, (_, name) => expand(read(`./src/partials/${name}.html`)));
 
-const layout = read('./src/layout.html');
+// Pages pick a layout with "layout" in their metadata; the default is the marketing layout.
+const layouts = { site: read('./src/layout.html'), app: read('./src/layout-app.html') };
 
 for (const file of readdirSync(new URL('./src/pages/', import.meta.url))) {
   const raw = read(`./src/pages/${file}`);
@@ -29,7 +30,7 @@ for (const file of readdirSync(new URL('./src/pages/', import.meta.url))) {
   const slug = file.replace(/\.html$/, '');
   const url = slug === 'index' ? 'https://ignitedevelopment.net/' : `https://ignitedevelopment.net/${slug}`;
 
-  const html = expand(layout)
+  const html = expand(layouts[meta.layout || 'site'])
     .replaceAll('{{title}}', meta.title)
     .replaceAll('{{desc}}', meta.desc)
     .replaceAll('{{url}}', url)

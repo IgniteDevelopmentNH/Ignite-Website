@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{desc}}">
+{{robots}}
+<meta name="theme-color" content="#080807">
+<meta name="referrer" content="same-origin">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v={{v}}">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png?v={{v}}">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v={{v}}">
+<link rel="preload" href="assets/fonts/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css?v={{v}}">
+<link rel="stylesheet" href="assets/meet.css?v={{v}}">
+<script src="assets/meet.js?v={{v}}" defer></script>
+</head>
+<body class="app">
+<header class="app-bar">
+  <a href="index.html" class="nav-logo" aria-label="Ignite Development home"><img src="assets/img/logo.webp" alt="Ignite Development" width="576" height="88"></a>
+  <div class="app-bar-end" id="adminBar"></div>
+</header>
+<main id="main">
+{{body}}
+</main>
+<footer class="app-foot">
+  <span>&copy; <span data-year>2026</span> Ignite Development LLC</span>
+  <a href="privacy.html">Privacy Policy</a>
+</footer>
+</body>
+</html>
