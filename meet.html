@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Find a Time | Ignite Development</title>
+<meta name="description" content="Share your availability for a meeting with Ignite Development.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#080807">
+<meta name="referrer" content="same-origin">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png?v=d8b733bab1">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png?v=d8b733bab1">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png?v=d8b733bab1">
+<link rel="preload" href="/assets/fonts/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=d8b733bab1">
+<link rel="stylesheet" href="/assets/meet.css?v=d8b733bab1">
+<script src="/assets/meet.js?v=d8b733bab1" defer></script>
+</head>
+<body class="app">
+<header class="app-bar">
+  <a href="/" class="nav-logo" aria-label="Ignite Development home"><img src="/assets/img/logo.webp" alt="Ignite Development" width="576" height="88"></a>
+  <div class="app-bar-end" id="adminBar"></div>
+</header>
+<main id="main">
+<!-- Client: enter a code -->
+<section class="m-view m-enter" id="viewEnter" hidden>
+  <div class="m-enter-in">
+    <span class="kick">Scheduling</span>
+    <h1 class="h-lg">Find a time <em>that works.</em></h1>
+    <p class="lead">Enter the four-digit code from your invite to share when you're free.</p>
+    <form class="m-code" id="codeForm" autocomplete="off">
+      <label class="sr" for="code0">Event code</label>
+      <div class="m-code-boxes">
+        <input id="code0" inputmode="numeric" aria-label="Digit 1" required>
+        <input inputmode="numeric" aria-label="Digit 2" required>
+        <input inputmode="numeric" aria-label="Digit 3" required>
+        <input inputmode="numeric" aria-label="Digit 4" required>
+      </div>
+      <button class="btn" type="submit">Continue <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+      <p class="form-status" id="codeStatus" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- Client: an event -->
+<section class="m-view" id="viewEvent" hidden>
+  <div class="wrap m-wrap">
+    <div class="m-head">
+      <span class="kick" id="evKick"></span>
+      <h1 class="h-md" id="evTitle"></h1>
+      <p class="m-desc" id="evDesc"></p>
+      <p class="m-meta" id="evMeta"></p>
+    </div>
+    <div class="m-final" id="evFinal" hidden></div>
+    <div class="m-closed" id="evClosed" hidden>This event isn't taking new responses. Questions? Email <a href="mailto:contact@ignitedevelopment.net">contact@ignitedevelopment.net</a>.</div>
+
+    <form class="form m-who" id="whoForm" hidden>
+      <div class="f full"><h2 class="m-h2">First, who are you?</h2><p class="small muted">Already responded? Enter the same name to update your times.</p></div>
+      <div class="f"><label for="whoName">Your name</label><input id="whoName" name="name" autocomplete="name" maxlength="80" required></div>
+      <div class="f" id="whoEmailF"><label for="whoEmail">Email <span id="whoEmailOpt">(optional)</span></label><input id="whoEmail" name="email" type="email" autocomplete="email" maxlength="160"></div>
+      <div class="f" id="whoCompanyF"><label for="whoCompany">Company <span>(optional)</span></label><input id="whoCompany" name="company" autocomplete="organization" maxlength="120"></div>
+      <div class="form-end">
+        <button class="btn" type="submit">Continue <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+        <p class="form-status" id="whoStatus" role="status"></p>
+      </div>
+    </form>
+
+    <div class="m-board" id="board" hidden>
+      <div class="m-toolbar">
+        <div class="m-me" id="meLine"></div>
+        <label class="m-tz">Times shown in <select id="tzSelect"></select></label>
+      </div>
+      <div class="m-panels" id="panels">
+        <div class="m-panel" id="minePanel">
+          <div class="m-panel-head">
+            <h2 class="m-h2">Your availability</h2>
+            <div class="m-tools" id="paintTools" role="radiogroup" aria-label="Paint mode">
+              <button type="button" data-tool="1" aria-pressed="true"><i class="sw s1"></i>Available</button>
+              <button type="button" data-tool="2" id="toolMaybe"><i class="sw s2"></i>If needed</button>
+              <button type="button" data-tool="0"><i class="sw s0"></i>Erase</button>
+            </div>
+          </div>
+          <p class="small muted m-hint">Click and drag across the times you're free. Drag over picked times to clear them.</p>
+          <div class="m-grid" id="mineGrid"></div>
+        </div>
+        <div class="m-panel" id="groupPanel">
+          <div class="m-panel-head">
+            <h2 class="m-h2">Everyone</h2>
+            <span class="small muted" id="groupCount"></span>
+          </div>
+          <div class="m-legend" id="groupLegend"></div>
+          <div class="m-grid" id="groupGrid"></div>
+          <div class="m-who-hover" id="groupHover" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="m-save">
+        <div class="f" id="commentF"><label for="comment">Anything we should know? <span>(optional)</span></label><textarea id="comment" rows="2" maxlength="1000" placeholder="E.g. Fridays are tight, mornings are best."></textarea></div>
+        <div class="form-end">
+          <button class="btn" type="button" id="saveBtn">Save my availability</button>
+          <p class="form-status" id="saveStatus" role="status"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Admin: event list -->
+<section class="m-view" id="viewDash" hidden>
+  <div class="wrap m-wrap">
+    <div class="m-dash-head">
+      <div><span class="kick">Admin</span><h1 class="h-md">Events</h1></div>
+      <a class="btn" href="#admin/new">New event <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></a>
+    </div>
+    <div class="m-list" id="eventList"></div>
+  </div>
+</section>
+
+<!-- Admin: create / edit -->
+<section class="m-view" id="viewEdit" hidden>
+  <div class="wrap m-wrap">
+    <a class="link m-back" href="#admin">&larr; All events</a>
+    <h1 class="h-md" id="editTitle">New event</h1>
+    <form id="editForm" class="m-edit" novalidate>
+      <fieldset class="m-card">
+        <legend>Basics</legend>
+        <div class="m-cols">
+          <div class="f full"><label for="eTitle">Title</label><input id="eTitle" maxlength="140" required placeholder="Kickoff call with Acme + Northwind"></div>
+          <div class="f full"><label for="eDesc">Message to clients <span>(shown on the page)</span></label><textarea id="eDesc" rows="3" maxlength="4000" placeholder="We're setting up a 60-minute call to walk through the project plan. Mark every time you could make it."></textarea></div>
+          <div class="f"><label for="eCode">Four-digit code</label><div class="m-inline"><input id="eCode" inputmode="numeric" maxlength="4" pattern="\d{4}" required><button type="button" class="m-mini" id="eCodeNew">New code</button></div></div>
+          <div class="f"><label for="eHost">Hosted by</label><input id="eHost" maxlength="120" placeholder="Ignite Development"></div>
+          <div class="f full"><label for="eNotes">Private notes <span>(only admins see these)</span></label><textarea id="eNotes" rows="2" maxlength="4000"></textarea></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="m-card">
+        <legend>Dates</legend>
+        <p class="small muted">Click or drag across days to pick them.</p>
+        <div class="m-quick" id="eQuick">
+          <button type="button" class="m-mini" data-quick="5">Next 5 weekdays</button>
+          <button type="button" class="m-mini" data-quick="10">Next 10 weekdays</button>
+          <button type="button" class="m-mini" data-quick="week">Next week (Mon–Fri)</button>
+          <button type="button" class="m-mini" data-quick="noweekend">Drop weekends</button>
+          <button type="button" class="m-mini" data-quick="clear">Clear</button>
+        </div>
+        <div class="m-datecal" id="eCal"></div>
+        <p class="small muted" id="eDateCount"></p>
+      </fieldset>
+
+      <fieldset class="m-card">
+        <legend>Times</legend>
+        <div class="m-cols m-cols-4">
+          <div class="f"><label for="eStart">Earliest time</label><select id="eStart"></select></div>
+          <div class="f"><label for="eEnd">Latest time</label><select id="eEnd"></select></div>
+          <div class="f"><label for="eSlot">Grid steps</label><select id="eSlot"><option value="10">10 min</option><option value="15">15 min</option><option value="20">20 min</option><option value="30">30 min</option><option value="60">1 hour</option></select></div>
+          <div class="f"><label for="eDur">Meeting length</label><select id="eDur"></select></div>
+          <div class="f full"><label for="eTz">Event time zone <span>(clients see times converted to their own zone)</span></label><select id="eTz"></select></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="m-card">
+        <legend>Block out times</legend>
+        <p class="small muted">Drag over times you don't want to offer, like lunch or a standing meeting. Blocked times are hidden from clients.</p>
+        <div class="m-inline m-gap"><button type="button" class="m-mini" id="eUnblock">Unblock all</button></div>
+        <div class="m-grid" id="eBlockGrid"></div>
+      </fieldset>
+
+      <fieldset class="m-card">
+        <legend>What clients see and enter</legend>
+        <div class="m-opts">
+          <p class="m-opt-h">Other people's responses</p>
+          <label class="m-radio"><input type="radio" name="eVis" value="all"> <span><b>Names and times</b> Clients see who's free when, like a classic group poll.</span></label>
+          <label class="m-radio"><input type="radio" name="eVis" value="anon"> <span><b>Totals only</b> Clients see how many people are free at each time, but not who.</span></label>
+          <label class="m-radio"><input type="radio" name="eVis" value="private"> <span><b>Nothing</b> Clients only see their own times. Best when clients don't know each other.</span></label>
+        </div>
+        <div class="m-opts">
+          <p class="m-opt-h">Options</p>
+          <label class="m-check"><input type="checkbox" id="eIfNeeded"> <span>Allow an “If needed” answer</span></label>
+          <label class="m-check"><input type="checkbox" id="eAskEmail"> <span>Ask for email</span></label>
+          <label class="m-check m-sub"><input type="checkbox" id="eReqEmail"> <span>Require email</span></label>
+          <label class="m-check"><input type="checkbox" id="eAskCompany"> <span>Ask for company</span></label>
+          <label class="m-check"><input type="checkbox" id="eAskComment"> <span>Allow a comment</span></label>
+          <label class="m-check"><input type="checkbox" id="eShowFinal"> <span>Show the chosen meeting time to clients once it's set</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="m-card">
+        <legend>Status</legend>
+        <div class="m-cols">
+          <div class="f"><label for="eStatus">Responses</label><select id="eStatus"><option value="open">Open</option><option value="closed">Closed</option></select></div>
+          <div class="f"><label for="eDeadline">Stop taking responses at <span>(optional, your time)</span></label><input id="eDeadline" type="datetime-local"></div>
+        </div>
+      </fieldset>
+
+      <div class="m-edit-end">
+        <button class="btn" type="submit" id="eSave">Save event</button>
+        <a class="btn btn-line" href="#admin">Cancel</a>
+        <p class="form-status" id="eStatusMsg" role="status"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Admin: results -->
+<section class="m-view" id="viewResults" hidden>
+  <div class="wrap m-wrap">
+    <a class="link m-back" href="#admin">&larr; All events</a>
+    <div class="m-res-head">
+      <div>
+        <span class="kick" id="rKick"></span>
+        <h1 class="h-md" id="rTitle"></h1>
+        <p class="m-meta" id="rMeta"></p>
+      </div>
+      <div class="m-res-code"><span>Code</span><b id="rCode"></b></div>
+    </div>
+    <div class="m-actions" id="rActions"></div>
+    <div class="m-final" id="rFinal" hidden></div>
+
+    <div class="m-res">
+      <div class="m-res-main">
+        <div class="m-toolbar">
+          <h2 class="m-h2">Group availability</h2>
+          <label class="m-tz">Times shown in <select id="rTz"></select></label>
+        </div>
+        <div class="m-legend" id="rLegend"></div>
+        <div class="m-grid" id="rGrid"></div>
+        <div class="m-who-hover" id="rHover" aria-live="polite"><span class="muted">Hover or tap a time to see who's free.</span></div>
+      </div>
+      <aside class="m-res-side">
+        <div class="m-card">
+          <h2 class="m-h2">Best times</h2>
+          <p class="small muted" id="rBestNote"></p>
+          <ol class="m-best" id="rBest"></ol>
+        </div>
+        <div class="m-card">
+          <h2 class="m-h2">Responses <span id="rCount"></span></h2>
+          <p class="small muted">Uncheck someone to leave them out of the grid and best times.</p>
+          <ul class="m-people" id="rPeople"></ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Admin login -->
+<dialog class="m-dialog" id="loginDialog">
+  <form method="dialog" id="loginForm" class="m-login">
+    <h2 class="m-h2">Admin login</h2>
+    <div class="f"><label for="loginPw">Password</label><input id="loginPw" type="password" autocomplete="current-password" required></div>
+    <div class="form-end">
+      <button class="btn" type="submit" value="login">Log in</button>
+      <button class="btn btn-line" type="button" id="loginCancel">Cancel</button>
+    </div>
+    <p class="form-status" id="loginStatus" role="status"></p>
+  </form>
+</dialog>
+
+<div class="m-toast" id="toast" role="status" aria-live="polite"></div>
+
+</main>
+<footer class="app-foot">
+  <span>&copy; <span data-year>2026</span> Ignite Development LLC</span>
+  <a href="/privacy">Privacy Policy</a>
+</footer>
+</body>
+</html>
